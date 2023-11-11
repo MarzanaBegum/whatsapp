@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-// import { Inter } from 'next/font/google'
 import "./globals.css";
-
-// const inter = Inter({ subsets: ['latin'] })
+import GoogleAuthProvier from "@/components/GoogleAuthProvider";
 
 export const metadata: Metadata = {
   title: "Whats App",
@@ -19,7 +17,12 @@ export default function RootLayout({
       <head>
         <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
       </head>
-      <body suppressHydrationWarning={true}>{children}</body>
+      <body suppressHydrationWarning={true}>
+        <GoogleAuthProvier>
+          {children}
+        </GoogleAuthProvier>
+        <div id="photo-picker-element"></div>
+      </body>
     </html>
   );
 }

@@ -31,6 +31,7 @@ const config: Config = {
         "outgoing-background": "#005c4b",
         "bubble-meta": "hsla(0,0%,100%,0.6)",
         "icon-ack": "#53bdeb",
+        "error":"#FF000D"
       },
       gridTemplateColumns: {
         main: "1fr 2.4fr",
