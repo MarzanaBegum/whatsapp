@@ -1,15 +1,15 @@
 import React from "react";
-import ChatList from "../ChatList/ChatList";
-import Empty from "../Empty";
+import ChatHeader from "./ChatHeader";
+import ChatContainer from "./ChatContainer";
+import MessageBar from "./MessageBar";
 
 const Chat = () => {
   return (
-    <>
-      <div className="grid grid-cols-main h-screen w-screen max-h-screen max-w-full overflow-hidden">
-        <ChatList />
-        <Empty />
-      </div>
-    </>
+    <div className="bg-conversation-panel-background border-conversation-border border-l w-full flex flex-col z-10 h-[100vh]">
+      <ChatHeader />
+      <ChatContainer />
+      <MessageBar />
+    </div>
   );
 };
 

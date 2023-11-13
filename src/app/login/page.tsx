@@ -7,6 +7,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useStateProvider } from "@/context/StateContext";
 import api from "@/utils/ApiRoutes";
+import { FcGoogle } from "react-icons/fc";
 
 const LoginScreen = () => {
   const router = useRouter();
@@ -89,7 +90,7 @@ const LoginScreen = () => {
         onClick={() => handleGoogleLogin()}
         className="flex gap-2 items-center bg-search-input-container-background p-5 rounded-md"
       >
-        <Image src="/icons/google-icon.svg" alt="google" width={30} height={30} />
+        <FcGoogle className="text-4xl" />
         <span className="text-white text-2xl">
           {loading ? "loading..." : "Login with Google"}
         </span>

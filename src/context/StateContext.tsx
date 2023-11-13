@@ -10,6 +10,8 @@ import Cookies from "js-cookie";
 // Define the state and action types
 export type State = {
   userInfo: any;
+  contactsPage: boolean;
+  currentChatUser: any;
 };
 
 export type Action = { type: string; payload: any };
@@ -19,6 +21,8 @@ export const initialState: State = {
   userInfo: Cookies.get("userInfo")
     ? JSON.parse(Cookies.get("userInfo")!)
     : undefined,
+  contactsPage: false,
+  currentChatUser: undefined,
 };
 
 // Create the context with types

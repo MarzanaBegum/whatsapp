@@ -4,6 +4,7 @@ import ContextMenu from "./ContextMenu";
 import PhotoPicker from "./PhotoPicker";
 import PhotoLibrary from "./PhotoLibrary";
 import CapturePhoto from "./CapturePhoto";
+import { FaCamera } from "react-icons/fa";
 
 interface AvatarProps {
   type: "sm" | "lg" | "xl";
@@ -106,7 +107,7 @@ const Avatar = ({ type, image, setImage = () => {} }: AvatarProps) => {
         {type === "lg" && (
           <div className="relative w-16 h-16">
             <Image
-              src={image}
+              src={`${image}`}
               alt="avatar"
               priority
               width={240}
@@ -128,13 +129,7 @@ const Avatar = ({ type, image, setImage = () => {} }: AvatarProps) => {
               onClick={(e) => ShowContextMenu(e)}
               id="context-opener"
             >
-              <Image
-                src="/camera.svg"
-                alt="camera"
-                width={40}
-                height={40}
-                id="context-opener"
-              />
+              <FaCamera className="text-2xl text-white" id="context-opener" />
               <span className="text-white" id="context-opener">
                 Change <br /> Profile <br /> Photo
               </span>

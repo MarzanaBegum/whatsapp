@@ -1,7 +1,7 @@
 import { useStateProvider } from "@/context/StateContext";
 import React from "react";
 import Avatar from "../shared/Avatar";
-import Image from "next/image";
+import { BsFillChatLeftTextFill, BsThreeDotsVertical } from "react-icons/bs";
 
 const ChatListHeader = () => {
   const [{ userInfo }, dispatch] = useStateProvider();
@@ -12,17 +12,16 @@ const ChatListHeader = () => {
         <Avatar type="sm" image={userInfo?.picture} />
       </div>
       <div className="flex gap-6">
-        <Image
-          src="/icons/chat-icon.svg"
-          alt="chaticon"
-          width={20}
-          height={20}
+        <BsFillChatLeftTextFill
+          className="text-xl text-panel-header-icon cursor-pointer"
+          title="New Chat"
+          onClick={() =>
+            dispatch({ type: "SET_ALL_CONTACTS_PAGE", payload: true })
+          }
         />
-        <Image
-          src="/icons/three-dot.svg"
-          alt="chaticon"
-          width={3}
-          height={3}
+        <BsThreeDotsVertical
+          className="text-xl text-panel-header-icon cursor-pointer"
+          title="Menu"
         />
       </div>
     </div>
