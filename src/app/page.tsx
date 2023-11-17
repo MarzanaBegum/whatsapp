@@ -2,13 +2,14 @@
 import { useStateProvider } from "@/context/StateContext";
 import api from "@/utils/ApiRoutes";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect} from "react";
 import Cookies from "js-cookie";
 import ChatPage from "@/components/Chat/ChatPage";
 
 export default function Home() {
   const router = useRouter();
-  const [{ userInfo }, dispatch] = useStateProvider();
+  const [{ userInfo, currentChatUser, messages }, dispatch] =
+    useStateProvider();
 
   useEffect(() => {
     if (userInfo && userInfo?.email) {
@@ -16,6 +17,7 @@ export default function Home() {
         .get(`/auth/user${userInfo?.email}`)
         .then((res) => {
           const user = {
+            _id: res.data?._id,
             name: res.data?.name,
             email: res.data?.email,
             picture: res.data?.picture,
@@ -38,6 +40,18 @@ export default function Home() {
     }
   }, [dispatch, router, userInfo]);
 
+  useEffect(() => {
+    const getMessages = async () => {
+      const result = await api.get(
+        `/messages/get-message/${userInfo?._id}/${currentChatUser._id}`
+      );
+      dispatch({ type: "SET_MESSAGES", payload: result.data });
+    };
+    if (currentChatUser) {
+      getMessages();
+    }
+  }, [currentChatUser]);
+  
   return (
     <main className="">
       <ChatPage />

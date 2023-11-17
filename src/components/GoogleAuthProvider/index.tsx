@@ -1,7 +1,7 @@
 "use client";
 
 import { StateProvider, initialState } from "@/context/StateContext";
-import reducer from "@/context/StateReducer";
+import { reducer } from "@/context/StateReducer";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { SnackbarProvider } from "notistack";
 

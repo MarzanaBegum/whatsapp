@@ -6,12 +6,15 @@ import React, {
   Dispatch,
 } from "react";
 import Cookies from "js-cookie";
+import { Message, UserType } from "./StateReducer";
 
 // Define the state and action types
 export type State = {
-  userInfo: any;
+  userInfo: UserType;
   contactsPage: boolean;
   currentChatUser: any;
+  messages: Message[];
+  socket: any;
 };
 
 export type Action = { type: string; payload: any };
@@ -23,6 +26,8 @@ export const initialState: State = {
     : undefined,
   contactsPage: false,
   currentChatUser: undefined,
+  messages: [],
+  socket: undefined,
 };
 
 // Create the context with types

@@ -25,7 +25,7 @@ const OnBoardingScreen = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  
+
   useEffect(() => {
     if (!userInfo?.newUser && !userInfo?.email) {
       router.push("/login");
@@ -49,6 +49,7 @@ const OnBoardingScreen = () => {
       dispatch({
         type: "SET_USER_INFO",
         payload: {
+          _id: data && data.newuser._id,
           name: data && data.newUser.name,
           email: data && data.newUser.email,
           picture: data && data.newUser.picture,

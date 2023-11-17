@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import { Action, State } from "./StateContext";
 
-const reducer = (state: State, action: Action) => {
+export const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case "SET_USER_INFO": {
       Cookies.set("userInfo", JSON.stringify(action.payload));
@@ -15,9 +15,33 @@ const reducer = (state: State, action: Action) => {
         ...state,
         currentChatUser: action.payload,
       };
+    case "SET_MESSAGES":
+      return { ...state, messages: action.payload };
+    case "ADD_SOCKET":
+      return { ...state, socket: action.payload };
+    case "ADD_MESSAGE":
+      return { ...state, messages: [...state.messages, action.payload] };
+
     default:
       return state;
   }
 };
 
-export default reducer;
+export type UserType = {
+  _id: string;
+  name: string;
+  email: string;
+  picture: string;
+  newUser: boolean;
+};
+
+export type Message = {
+  _id: string;
+  _v: number;
+  sender: string;
+  receiver: string;
+  date: string;
+  type: string;
+  message: string;
+  messageStatus: string;
+};

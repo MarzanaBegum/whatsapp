@@ -43,10 +43,14 @@ const LoginScreen = () => {
         setLoading(false);
 
         if (data && data.message === "User not found") {
-          dispatch({ type: "SET_USER_INFO", payload: userInfo });
+          dispatch({
+            type: "SET_USER_INFO",
+            payload: { ...userInfo, _id: data?._id },
+          });
           router.push("/onboarding");
         } else if (data && data?.email) {
           const user = {
+            _id: data?._id,
             name: data?.name,
             email: data?.email,
             picture: data?.picture,
